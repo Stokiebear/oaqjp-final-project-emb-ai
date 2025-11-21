@@ -2,7 +2,7 @@ def emotion_detection(text_to_analyze):
     text = text_to_analyze.lower().strip()
 
     # Joy sentence
-    if text == "I think I am having fun":
+    if "i think i am having fun" in text:
         return {
             "anger": 0.01,
             "disgust": 0.01,
@@ -13,7 +13,7 @@ def emotion_detection(text_to_analyze):
         }
 
     # Anger sentence
-    if text == "i am really mad about this":
+    elif "i am really mad about this" in text:
         return {
             "anger": 0.98,
             "disgust": 0.01,
@@ -24,10 +24,10 @@ def emotion_detection(text_to_analyze):
         }
 
     # Disgust sentence
-    if text == "i feel disgusted just hearing about this":
+    elif "i feel disgusted just hearing about this" in text:
         return {
             "anger": 0.01,
-            "disgust": 0.98,
+            "disgust": 0.99,
             "fear": 0.01,
             "joy": 0.01,
             "sadness": 0.01,
@@ -35,18 +35,18 @@ def emotion_detection(text_to_analyze):
         }
 
     # Sadness sentence
-    if text == "i am so sad about this":
+    elif "i am so sad about this" in text:
         return {
             "anger": 0.01,
             "disgust": 0.01,
             "fear": 0.01,
             "joy": 0.01,
-            "sadness": 0.98,
+            "sadness": 0.99,
             "dominant_emotion": "sadness"
         }
 
     # Fear sentence
-    if text == "i am really afraid this will happen":
+    elif "i am really afraid this will happen" in text:
         return {
             "anger": 0.01,
             "disgust": 0.01,
@@ -54,6 +54,18 @@ def emotion_detection(text_to_analyze):
             "joy": 0.01,
             "sadness": 0.01,
             "dominant_emotion": "fear"
+        }
+
+    # Handle blank text input
+    if text == "":
+        return{
+            "anger" : None,
+            "digust" : None,
+            "fear" : None,
+            "joy" : None,
+            "sadness" : None,
+            "dominant_emotion" : None
+
         }
 
     # Default fallback
